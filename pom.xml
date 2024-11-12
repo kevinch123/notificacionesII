@@ -17,7 +17,7 @@
     <description>API para notificaciones</description>
 
     <properties>
-        <java.version>17</java.version> <!-- Cambiado a Java 17 -->
+        <java.version>17</java.version> <!-- Actualizado a Java 17 -->
     </properties>
 
     <dependencies>
@@ -31,11 +31,18 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- MySQL Driver -->
+        <!-- MySQL Driver (solo para entorno de producción) -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- H2 Database (solo para pruebas) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!-- Testing -->
@@ -71,10 +78,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.8.1</version> <!-- Soporta Java 17 -->
                 <configuration>
-                    <source>17</source> <!-- Cambiado a Java 17 -->
-                    <target>17</target> <!-- Cambiado a Java 17 -->
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
 
@@ -82,7 +89,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>3.0.0-M7</version> <!-- Versión estable -->
                 <configuration>
                     <skipTests>false</skipTests>
                 </configuration>
@@ -90,3 +97,4 @@
         </plugins>
     </build>
 </project>
+
